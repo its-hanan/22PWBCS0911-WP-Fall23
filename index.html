@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>My Selling Website</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .main {
+      background: linear-gradient(90deg, #b7b 50%, #0f2d1e 50%);
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main_01 {
+      background-color: white;
+      width: 90%;
+      height: 90%;
+    }
+
+    .nav .logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .nav {
+      width: 90%;
+      margin: auto;
+      height: 14vh;
+    }
+
+    .nav,
+    .navul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navul li {
+      list-style: none;
+      padding: 20px;
+    }
+
+    .navul a {
+      text-decoration: none;
+      color: black;
+      font-size: 19px;
+      position: relative;
+    }
+
+    .navul a::before {
+      content: "";
+      bottom: -10px;
+      left: 0;
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: black;
+      transition: 0.3s ease;
+    }
+
+    .navul a:hover::before {
+      width: 100%;
+    }
+
+    .logo img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+    }
+
+    .hero img {
+      width: 45vw;
+    }
+
+    .writting {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-left: 3px solid #0f2d1e;
+      padding: 20px 30px;
+    }
+
+    .writting h3 {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgb(192, 111, 12);
+    }
+
+    .writting h1 {
+      font-size: 50px;
+      color: #0f2d1e;
+    }
+
+    .writting p {
+      color: black;
+      font-size: 19px;
+      line-height: 30px;
+    }
+
+    .writting button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      background-color: #0f2d1e;
+      cursor: pointer;
+    }
+
+    .writting button:hover {
+      background-color: white;
+      color: #0f2d1e;
+    }
+
+    .product {
+      padding: 10px 8% 20px;
+      background-color: white;
+    }
+
+    .pro-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+      align-items: center;
+      gap: 0.80rem;
+      margin-top: 30px;
+    }
+
+    .pro-content .row {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .pro-content .row i {
+      font-size: 40px;
+      color: #0f2d1e;
+    }
+
+    .about {
+      padding: 150px 8% 120px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+
+    .aboutimg img {
+      max-width: 520px;
+      height: auto;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: #b7b;
+    }
+
+    .abouttext h3 {
+      color: #0f2d1e;
+      font-weight: 600;
+      font-size: 30px;
+
+    }
+
+    .abouttext p {
+      color: black;
+      letter-spacing: 1px;
+      margin-bottom: 4rem;
+      margin-top: 9px;
+    }
+
+    #aboutbutton {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      background-color: #0f2d1e;
+      cursor: pointer;
+    }
+
+    #aboutbutton:hover {
+      background-color: white;
+      color: #0f2d1e;
+    }
+
+    .product {
+      padding: 10px 8% 120px;
+    }
+
+    .maintext {
+      text-align: center;
+    }
+
+    .maintext h3 {
+      color: #0f2d1e;
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .cardcontent {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+      align-items: center;
+      margin-top: 30px;
+      gap: 0.80rem;
+    }
+
+    .cardcontent .row {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .row img {
+      width: 100%;
+      display: block;
+    }
+
+    .cardbody h3 {
+      color: #0f2d1e;
+    }
+
+    .cardbody button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      background-color: #0f2d1e;
+      cursor: pointer;
+    }
+
+    .cardbody button:hover {
+      background-color: white;
+      color: #0f2d1e;
+    }
+
+    .cardbody h5 {
+      font-size: 30px;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 2.5rem;
+      padding: 100px 8% 120px;
+      background: #f3f3f3;
+    }
+
+    .text {
+      margin-bottom: 10px;
+    }
+
+    .text h2 {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .list {
+      margin-top: 15px;
+    }
+
+    .list a {
+      margin-bottom: 15px;
+    }
+
+    .list p a {
+      display: block;
+      font-weight: bold;
+      color: #f0cd09;
+      font-size: 15px;
+    }
+
+    .contactform form {
+      position: relative;
+    }
+
+    .contactform form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      background: white;
+      color: black;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .contactform textarea {
+      resize: none;
+      height: 160px;
+    }
+
+    .contactform .submit_01 {
+      display: inline-block;
+      font-size: 15px;
+      background: #0f2d1e;
+      color: white;
+      width: 160px;
+      cursor: pointer;
+
+    }
+
+    .contactform .submit_01:hover {
+      background-color: white;
+      color: #0f2d1e;
+    }
+
+    #footer {
+      width: 100%;
+      background: #f3f3f3;
+    }
+
+    .footercontent {
+      text-align: center;
+      padding-top: 5%;
+    }
+
+    .social a {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      background-color: #0f2d1e;
+      cursor: pointer;
+    }
+
+    .social a:hover {
+      background-color: white;
+      color: #0f2d1e;
+    }
+
+
+    @media screen and (max-width: 720px) {
+      .navul li {
+        font-size: 5px;
+        padding: 6px;
+      }
+
+      .writting h1 {
+        font-size: 25px;
+      }
+
+      .writting h3 {
+        font-size: 10px;
+      }
+
+      .writting p {
+        font-size: 12px;
+        line-height: 10px;
+      }
+
+      .writting button {
+        padding: 7px 20px;
+        font-size: 10px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .aboutimg {
+        text-align: center;
+        order: 2;
+      }
+
+      .aboutimg img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+
+      .cardcontent {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="main_01">
+      <div class="nav">
+        <div class="logo">
+          <img src="image_02.png" alt="logo" />
+        </div>
+        <ul class="navul">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#product">Product</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <!--Home Section-->
+      <section id="home">
+        <div class="hero">
+          <img src="image_01.jpg" alt="image" />
+          <div class="writting">
+            <h3>Bicycle</h3>
+            <h1>Schwinn Phocus</h1>
+            <p>
+              Many features are general characteristics of bicycles, but
+              specific models and brands may include Adult Road Bike, Mens and
+              Womens, Aluminum Frame, Flat and Drop Bar Options, Multiple Speed
+              Drivetrain, Carbon Fiber Fork, 700c Wheels.
+            </p>
+            <button>Shop Now</button>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <!--More details  Section-->
+  <section class="product">
+    <div class="pro-content">
+      <div class="row">
+        <i class="fa-solid fa-truck"></i>
+        <h3>Free Delivery</h3>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-rotate-left"></i>
+        <h3>Return in 30 Days</h3>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h3>Secure Shopping</h3>
+      </div>
+    </div>
+  </section>
+  <!--About section-->
+  <section class="about" id="about">
+    <div class="aboutimg">
+      <img src="image_03.jpg" alt="image">
+    </div>
+    <div class="abouttext">
+      <h3>About Us</h3>
+      <p style="font-size: 30px;">The efficiency of a bicycle is paramount. It's all about converting the energy you
+        exert into forward motion. Key factors that contribute to efficiency include the bike's frame geometry, the
+        quality of components like the drivetrain, and the rolling resistance of the tires.</p>
+      <button id="aboutbutton">Read More</button>
+    </div>
+  </section>
+  <!--Product section-->
+  <section class="product" id="product">
+    <div class="maintext">
+      <h3>Products</h3>
+    </div>
+    <div class="cardcontent">
+      <div class="row">
+        <img src="image_04.jpg" alt="image">
+        <div class="cardbody">
+          <h3>TREK</h3>
+          <h5>Price $2000</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="row">
+        <img src="image_05.jpg" alt="image">
+        <div class="cardbody">
+          <h3>BIANCHI</h3>
+          <h5>Price $2100</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="row">
+        <img src="image_06.jpg" alt="image">
+        <div class="cardbody">
+          <h3>CANYON</h3>
+          <h5>Price $2200</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="cardcontent">
+      <div class="row">
+        <img src="image_10.jpg" alt="image">
+        <div class="cardbody">
+          <h3>GIANT BICYCLES</h3>
+          <h5>Price $1500</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="row">
+        <img src="image_08.jpg" alt="image">
+        <div class="cardbody">
+          <h3>CYCLOCROSS</h3>
+          <h5>Price $2500</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+      <div class="row">
+        <img src="image_09.jpg" alt="image">
+        <div class="cardbody">
+          <h3>COLNAGO</h3>
+          <h5>Price $2100</h5>
+          <button>Order Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Contact Section-->
+  <section class="contact" id="contact">
+    <div class="text">
+      <h2>Get In Touch</h2>
+      <div class="list">
+        <p><i class="fa-regular fa-envelope" style="color: #f2079c;"></i><a
+            href="mailto:hananhussain634@gmail.com">hananhussain634@gmail.com</a></p>
+        <p><i class="fa-solid fa-mobile-screen" style="color: #f2079c;"></i><a
+            href="tel:+923165153701">+923165153701</a></p>
+        <p><i class="fa-brands fa-github" style="color: #f2079c;"></i><a href="https://www.github.com">GitHub</a></p>
+        <p><i class="fa-brands fa-instagram" style="color: #f2079c;"></i><a
+            href="https://www.instagram.com">Instagram</a></p>
+      </div>
+    </div>
+    <div class="contactform">
+      <form action="#">
+        <input type="name" placeholder="Name" required>
+        <input type="number" placeholder="Phone" required>
+        <input type="email" placeholder="Email" required>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+        <input type="submit" value="send" class="submit_01" required>
+      </form>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="footercontent">
+      <div class="social">
+        <a href="mailto:hananhussain634@gmail.com"><i class="fa-regular fa-envelope" style="color: #f2079c;"></i></a>
+        <a href="tel:+923165153701"><i class="fa-solid fa-mobile-screen" style="color: #f2079c;"></i></a>
+        <a href="https://www.github.com"><i class="fa-brands fa-github" style="color: #f2079c;"></i></a>
+      </div>
+    </div><br>
+    <p style="text-align: center;">Developed By Abdul&nbsp;Hannan&copy;</p>
+  </footer>
+</body>
+</html>
