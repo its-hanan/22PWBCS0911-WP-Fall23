@@ -1,0 +1,119 @@
+/* Variables */
+$primary-color: #008CBA;
+$secondary-color: #333;
+$background-color: #f5f5f5;
+$footer-bg-color: #a715ea;
+$text-color: #100c0c;
+$nav-bg-color: #a715ea;
+$link-color: #fff;
+
+/* Mixins */
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+nav {
+    background-color: $nav-bg-color;
+    height: 20%;
+    padding: 20px;
+    text-align: center;
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            display: inline;
+            margin-right: 20px;
+
+            a {
+                text-decoration: none;
+                color: $link-color;
+                font-weight: bold;
+
+            }
+        }
+    }
+}
+
+header {
+    text-align: center;
+    .logo {
+        width: 250px;
+        height: 200px;
+        background-color: $primary-color;
+        
+    }
+    h1 {
+        text-align: center;
+        text-decoration: none;
+    }
+}
+
+/* Sections */
+section {
+    padding: 20px;
+    h2 {
+        font-size: 24px;
+        color: $secondary-color;
+        text-align: center;
+    }
+    p {
+        font-size: 16px;
+        color: $secondary-color;
+    }
+
+    &.menu-category {
+        ul {
+            list-style: none;
+            li {
+                h3 {
+                    font-size: 20px;
+                    margin: 10px 0;
+                    color: $secondary-color;
+                }
+                p {
+                    font-size: 16px;
+                    color: $secondary-color;
+                }
+                &.price {
+                    font-size: 18px;
+                    margin: 10px 0;
+                    font-weight: bold;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $footer-bg-color;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    p {
+        font-size: 14px;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        li {
+            margin: 10px;
+        }
+    }
+}
