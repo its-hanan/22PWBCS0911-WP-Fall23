@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>OLMS</title>
+
+
+    <style>
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+      
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+            box-shadow: 1cap;
+        }
+
+        .col-md-4 {
+            flex: 0 0 calc(33.3333% - 20px);
+            max-width: calc(33.3333% - 1px);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px; 
+            box-shadow: 0px 0px 10px rgba(94, 19, 19, 0.3);
+            background-color: skyblue;
+        }
+
+        .column {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align:center;
+        
+           
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #book-list-ul li,
+        #search-results li {
+            padding: 5px 0;
+            color: white;
+        }
+
+        form {
+            
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid teal;
+            border-radius: 5px;
+        }
+
+        button[type="submit"],
+        button[type="button"] 
+        {
+            background-color:lightseagreen ;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0  calc(50% - 20px);
+        max-width: calc(50% - 1px);
+    }
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <h1 class="display-6 text-center">Online Library Management System (OLMS)</h1> 
+    <div class="container">
+
+        <div class="col-md-4" id="book-list" class="column">
+            <h2>Book List</h2>
+            <ul class="list-group" id="book-list-ul">
+
+            </ul>
+        </div>
+        <div class="col-md-4" id="add-book" class="column">
+            <h2>Add New Book</h2>
+            <form id="add-book-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="book-title" placeholder="Title" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="book-author" placeholder="Author" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="book-isbn" placeholder="ISBN" required>
+                </div>
+                <button type="submit" class="btn btn-secondary">Add Book</button>
+            </form>
+        </div>
+        <div class="col-md-4" id="search-book" class="column">
+            <h2>Search for Books</h2>
+            <form id="search-book-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search-input" placeholder="Search...">
+                </div>
+                <button type="button" class="btn btn-primary" id="search-button">Search Books</button>
+            </form>
+            <ul class="list-group" id="search-results">
+
+            </ul>
+        </div>
+    </div>
+
+    <script>
+
+const books = [
+        { title: "Add Books In your Library", author: "", isbn: "" },
+       
+    ];
+    
+    
+    function displayBookList() {
+        const bookListUl = document.getElementById("book-list-ul");
+        bookListUl.innerHTML = "";
+        for (const book of books) {
+            const li = document.createElement("li");
+            li.textContent = `${book.title} by ${book.author} (ISBN: ${book.isbn})`;
+            bookListUl.appendChild(li);
+        }
+    }
+    
+    
+    function addBook() {
+        const title = document.getElementById("book-title").value;
+        const author = document.getElementById("book-author").value;
+        const isbn = document.getElementById("book-isbn").value;
+    
+        
+        if (books.some(book => book.isbn === isbn)) {
+            alert("Book already exist");
+            return;
+        }
+    
+      
+        if (books.some(book => book.title === title && book.author === author)) {
+            alert("Book already exists");
+            return;
+        }
+    
+        books.push({ title, author, isbn });
+        displayBookList();
+        document.getElementById("add-book-form").reset();
+    }
+    
+    function searchBook() {
+        const searchInput = document.getElementById("search-input").value;
+        const searchResults = document.getElementById("search-results");
+        searchResults.innerHTML = ""; 
+    
+        for (const book of books) {
+            if (book.title.toLowerCase().includes(searchInput.toLowerCase()) ||
+                book.author.toLowerCase().includes(searchInput.toLowerCase()) ||
+                book.isbn.includes(searchInput)) {
+                const li = document.createElement("li");
+                li.textContent = `${book.title} by ${book.author} (ISBN: ${book.isbn})`;
+                searchResults.appendChild(li);
+            }
+        }
+    }
+    displayBookList();
+    
+    document.getElementById("add-book-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        addBook();
+    });
+    
+    document.getElementById("search-button").addEventListener("click", searchBook);
+    
+
+    </script>
+
+</body>
+
+</html>
